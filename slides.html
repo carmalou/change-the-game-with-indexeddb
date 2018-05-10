@@ -321,7 +321,45 @@ class: left, middle, inverse
 class: left, middle, inverse
 
 # Initialize a database
-// DO THAT HERE
+
+```javascript
+var db = window.indexeddb.open('deathstar2', 1);
+```
+
+### But there's a little more to it than that.
+---
+class: left, middle, inverse
+
+# Define the database schema
+### Object Stores
+
+```javascript
+db.onungradeneeded = function(event) {
+  var tmpDb = event.target.result;
+
+  var trooperStore = tmpDb.addObjectStore("stormtroopers", { autoincrement: true} );
+  var shipStore = tmpDb.addObjectStore("rooms", { autoincrement: true} );
+}
+```
+---
+class: left, middle, inverse
+
+# Define the database schema
+### Indexes
+
+```javascript
+db.onungradeneeded = function(event) {
+
+  trooperStore.addIndex("id", "id", { unique: true} );
+  trooperStore.addIndex("name", "name", { unique: false } );
+  trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", { unique: false });
+  trooperStore.addIndex("messHallAccess", "messHallAccess", { unique: false });
+  trooperStore.addIndex("landingStripAccess", "landingStripAccess", { unique: false });
+  trooperStore.addIndex("armoryAccess", "armoryAccess", { unique: false });
+
+  shipStore.addIndex("room", "room", { unique: true });
+}
+```
 ---
 class: left, middle, inverse
 
