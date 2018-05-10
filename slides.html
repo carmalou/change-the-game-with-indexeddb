@@ -318,6 +318,18 @@ class: left, middle, inverse
         - Transactions
         - Events
 ---
+class: center, middle, inverse
+
+# What data should be stored clientside?
+
+// Talk security, etc
+---
+class: left, middle, inverse
+
+# Use-cases
+
+// Find some case studies, if possible
+---
 class: left, middle, inverse
 
 # Initialize a database
@@ -337,8 +349,11 @@ class: left, middle, inverse
 db.onungradeneeded = function(event) {
   var tmpDb = event.target.result;
 
-  var trooperStore = tmpDb.addObjectStore("stormtroopers", { autoincrement: true} );
-  var shipStore = tmpDb.addObjectStore("rooms", { autoincrement: true} );
+  var trooperStore = tmpDb.addObjectStore("stormtroopers", 
+    { keyPath: 'name', autoincrement: true  });
+
+  var shipStore = tmpDb.addObjectStore("rooms", 
+    { autoincrement: true });
 }
 ```
 ---
@@ -349,9 +364,9 @@ class: left, middle, inverse
 
 ```javascript
 db.onungradeneeded = function(event) {
+  // continued func from last slide
 
-  trooperStore.addIndex("id", "id", { unique: true} );
-  trooperStore.addIndex("name", "name", { unique: false } );
+  trooperStore.addIndex("id", "id", { autoIncrement: true } );
   trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", { unique: false });
   trooperStore.addIndex("messHallAccess", "messHallAccess", { unique: false });
   trooperStore.addIndex("landingStripAccess", "landingStripAccess", { unique: false });
@@ -366,10 +381,10 @@ class: left, middle, inverse
 # Open an IndexedDB database
 
 ```javascript
-var db = window.indexeddb.open('myFakeDb', 1);
+var db = window.indexeddb.open('deathstar2', 1);
 
 db.onsuccess = function(event) {
-    // do some stuff
+    // do some (probably dark side) stuff
 }
 ```
 ---
@@ -381,59 +396,121 @@ class: left, middle, inverse
 db.close();
 
 db.onclose = function() {
-    // do some stuff
+    // probably force-choke someone
 }
+```
 ---
-class: left, middle, inverse
+class: center, middle, inverse
 
 # CRUD operations
 ---
 class: left, middle, inverse
 
 # Create a record
-// DO THAT HERE
+
+```javascript
+var newTrooper = {
+  'name': 'Sally Stormer',
+  'trashCompactorAccess': true,
+  'messHallAccess': true,
+  'landingStripAccess': false,
+  'armoryAccess': true
+};
+
+var tmpTransaction = db.transaction("stormtroopers").objectStore("stormtroopers");
+tmpTransaction.add({newTrooper});
+```
 ---
 class: left, middle, inverse
 
 # Read a record
-// DO THAT HERE
+
+```javascript
+db.transaction("stormtroopers")
+  .objectStore("stormtroopers")
+  .get("Sally Stormer")
+  .onsuccess = function(event) {
+  console.log(event.target.result);
+}
+```
 ---
 class: left, middle, inverse
 
 # Update a record
-// DO THAT HERE
+
+```javascript
+var transaction = db.transaction("stormtroopers", "readwrite").objectStore("stormtroopers");
+var trooper = transaction.get("Sally Stormer");
+
+trooper.onsuccess = function(event) {
+  // grab the data and update it
+  var sally = event.target.result;
+  sally.trashCompactorAccess = false;
+  sally.armoryAccess = true;
+
+  var update = transaction.put(sally);
+
+  // don't forget the onsuccess/onerror functions!
+  update.onsuccess = function(event) {
+    // yay! Sally got a promotion
+  }
+  update.onerror = function(event) {
+    // someone is probs getting force-choked over this
+  }
+```
 ---
 class: left, middle, inverse
 
 # Delete a record
-// DO THAT HERE
+
+```javascript
+var transaction = db.transaction("stormtroopers", "readwrite")
+                    .objectStore("stormtroopers")
+                    .delete("Traitor Trooper");
+
+transaction.onsuccess = function(event) {
+  // more dark side stuff
+}
+```
 ---
 class: left, middle, inverse
 
 # Get all data
-// DO THAT HERE
+
+```javascript
+  db.transaction("room", "readwrite")
+    .objectStore("room")
+    .getAll()
+    .onsuccess = function(event) {
+      console.log(event.target.result);
+    }
+```
 ---
 class: left, middle, inverse
 
 # Delete all data
-// DO THAT HERE
+
+```javascript
+  db.transaction("stormtroopers", "readwrite")
+    .objectStore("stormtroopers")
+    .clear()
+    .onsuccess = function(event) {
+      console.log('Data has been deleted');
+    }
+```
 ---
 class: left, middle, inverse
 
 # Delete database
-// DO THAT HERE
----
-class: center, middle, inverse
 
-# What data should be stored clientside?
+```javascript
 
-// Talk security, etc
----
-class: left, middle, inverse
+  var deleteDB = window.indexeddb.deleteDatabase("deathstar2");
 
-# Use-cases
-
-// Find some case studies, if possible
+  deleteDB.onsuccess = function(event) {
+    console.log("Deleted successfully");
+  }
+```
 ---
 class: left, middle, inverse
 
