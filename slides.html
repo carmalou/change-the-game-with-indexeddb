@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Change the Game with IndexedDB</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      a {
+        color: #a07cc0;
+      }
+      li {
+        font-size: 24pt;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .inverse {
+        background: #000;
+        color: #fff;
+      }
+      .remark-slide-content {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .stripe {
+        height: 5px;
+        width: 100%;
+        background-color: indigo;
+        border-top: 1px solid rebeccapurple;
+        border-bottom: 1px solid rebeccapurple;
+        position: absolute;
+        margin-top: 125px;
+        left: 0;
+        right: 0;
+      }
+      .remark-slide-right {
+          bottom: 12px;
+          position: absolute;
+          left: 20px;
+      }
+      .carmalou {
+          color: #CCBADC;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Change the Game with IndexedDB
+---
+class: center, middle, inverse
+
+# Change the Game with IndexedDB
+---
+layout: false
+class: center, middle, inverse
+# Carmen Bourlon
+## Twitter: [@carmalou](https://twitter.com/carmalou)
+## Blog: [carmalou.com](http://carmalou.com)
+## [MargieMap](https://carmalou.com/margie)
+---
+class: center, middle, inverse
+
+# Problem: We need to cache data so it's available clientside
+---
+class: left, middle, inverse
+
+# Why do we need to cache data clientside?
+---
+class: left, middle, inverse
+
+# Why do we need to cache data clientside?
+
+- Intermittent connection is a real problem
+---
+class: left, middle, inverse
+
+# Why do we need to cache data clientside?
+
+- Intermittent connection is a real problem
+- Everyone will lose connection at some point
+---
+class: center, middle, inverse
+
+# Losing connection
+---
+class: center, middle, inverse
+
+
+
+</textarea>
+<script src="./scripts/remark-latest.min.js"></script>
+<script>
+  var slideshow = remark.create();
+  var arr = document.getElementsByClassName('remark-slide-content');
+  for(var i = 0; i < arr.length; i++) {
+    var tmpEl = document.createElement('div');
+    var innerLink = document.createElement('a');
+    innerLink.setAttribute('href', 'https://twitter.com/carmalou');
+    var innerText = document.createTextNode('Twitter: carmalou');
+    tmpEl.classList.add('remark-slide-right');
+    innerLink.classList.add('carmalou');
+    innerLink.appendChild(innerText);
+    tmpEl.appendChild(innerLink);
+    arr[i].appendChild(tmpEl);
+  }
+</script>
+</body>
+</html>
