@@ -310,7 +310,103 @@ class: left, middle, inverse
 - Can save complex data
 - Data persistence
 - Higher storage capabilities
+---
+class: left, middle, inverse
 
+# TALK ABOUT WHAT INDEXEDDB IS HERE
+        - DBs vs ObjStores, etc
+        - Transactions
+        - Events
+---
+class: left, middle, inverse
+
+# Initialize a database
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Open an IndexedDB database
+
+```javascript
+var db = window.indexeddb.open('myFakeDb', 1);
+
+db.onsuccess = function(event) {
+    // do some stuff
+}
+```
+---
+class: left, middle, inverse
+
+# Close an IndexedDB database
+
+```javascript
+db.close();
+
+db.onclose = function() {
+    // do some stuff
+}
+---
+class: left, middle, inverse
+
+# CRUD operations
+---
+class: left, middle, inverse
+
+# Create a record
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Read a record
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Update a record
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Delete a record
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Get all data
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Delete all data
+// DO THAT HERE
+---
+class: left, middle, inverse
+
+# Delete database
+// DO THAT HERE
+---
+class: center, middle, inverse
+
+# What data should be stored clientside?
+
+// Talk security, etc
+---
+class: left, middle, inverse
+
+# Use-cases
+
+// Find some case studies, if possible
+---
+class: left, middle, inverse
+
+# Demos!
+---
+layout: false
+class: center, middle, inverse
+# Carmen Bourlon
+## Twitter: [@carmalou](https://twitter.com/carmalou)
+## Blog: [carmalou.com](http://carmalou.com)
+## [MargieMap](https://carmalou.com/margie)
 
 </textarea>
 <script src="./scripts/remark-latest.min.js"></script>
