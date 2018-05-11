@@ -123,7 +123,7 @@ class: center, middle, inverse
 
 # Solution: Cache data clientside
 ---
-class: center, middle, inverse
+class: left, middle, inverse
 
 # Cookies
 ---
@@ -156,6 +156,10 @@ class: left, middle, inverse
 - Low storage capabilities
 - Increased overhead on AJAX requests
 - Non-complex data
+---
+class: left, middle, inverse
+
+# Session storage
 ---
 class: left, middle, inverse
 
@@ -200,6 +204,10 @@ class: left, middle, inverse
 class: left, middle, inverse
 
 # Local storage
+---
+class: left, middle, inverse
+
+# Local storage
 
 - Ease of use
 ---
@@ -236,6 +244,7 @@ class: left, middle, inverse
 - Low storage capabilities
 - Short-term data persistence
 - Non-complex data
+
 ---
 class: left, middle, inverse
 
@@ -313,10 +322,53 @@ class: left, middle, inverse
 ---
 class: left, middle, inverse
 
-# TALK ABOUT WHAT INDEXEDDB IS HERE
-        - DBs vs ObjStores, etc
-        - Transactions
-        - Events
+# IndexedDB Structure
+
+- Databases
+- Object stores
+- Indexes
+- Keypath
+- AutoIncrement
+- Transactions
+---
+class: left, middle, inverse
+
+# Object Stores
+
+- IndexedDB can hold multiple object stores
+- Groups similar data together
+- Similar to NoSQL
+---
+class: left, middle, inverse
+
+# Indexes
+
+- Defines properties within an object store
+- Properties do not have type requirements
+---
+class: left, middle, inverse
+
+# Keypath
+
+- Specifies the unique key for a record
+- Property does not have type requirement
+- Can look up record directly by keypath
+- Property must be unique
+---
+class: left, middle, inverse
+
+# AutoIncrement
+
+- Similar to autoincrementing primary keys
+---
+class: left, middle, inverse
+
+# Transactions
+
+- Similar to SQL Transactions
+- Specify which object store to edit
+- Can specify array of object stores
+- Specify `readwrite`, `readonly`, or `versionchange`
 ---
 class: center, middle, inverse
 
@@ -457,6 +509,7 @@ trooper.onsuccess = function(event) {
   update.onerror = function(event) {
     // someone is probs getting force-choked over this
   }
+}
 ```
 ---
 class: left, middle, inverse
