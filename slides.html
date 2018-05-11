@@ -55,10 +55,24 @@
 class: center, middle, inverse
 
 # Change the Game with IndexedDB
+
+???
+Remember to breathe!
+
+P for presenter mode.
+
+C to open a cloned window.
 ---
 class: center, middle, inverse
 
 # Change the Game with IndexedDB
+
+???
+Remember to breathe!
+
+P for presenter mode.
+
+C to open a cloned window.
 ---
 layout: false
 class: center, middle, inverse
@@ -66,16 +80,30 @@ class: center, middle, inverse
 ## Twitter: [@carmalou](https://twitter.com/carmalou)
 ## Blog: [carmalou.com](http://carmalou.com)
 ## [MargieMap](https://carmalou.com/margie)
+
+???
+Remember to breathe!
+
+Pause for a beat before speaking && skipping through slides.
+You'll do great!
 ---
 class: center, middle, inverse
 
 # Problem: Internet access is unreliable
+
+???
+The fact is, internet access is unreliable. There's a whole number of reasons why it can be so unreliable.
 ---
 class: left, middle, inverse
 
 # Problem: Internet access is unreliable
 
 - Intermittent connection is a real problem
+
+???
+Most commonly, the issue we see here in the states is this "intermittent connection."
+What I mean by that is that sometimes a person will have connection, and sometimes they won't.
+The issue is that someone's loss of internet connection is incredibly unpredictable and largely beyond their control.
 ---
 class: left, middle, inverse
 
@@ -83,17 +111,25 @@ class: left, middle, inverse
 
 - Intermittent connection is a real problem
 - Everyone will lose connection at some point
+
+???
+The most important thing to remember is that _everyone_ will experience a loss of connection at some time. And, inevitably, it will happen at the worst time possible.
 ---
 class: left, middle, inverse
 
 # Losing connection
 
+???
+Really briefly I want to illustrate some reasons people might lose their internet connection
 ---
 class: left, middle, inverse
 
 # Losing connection
 
 - Travel
+
+???
+Someone might be traveling for work or for leisure, or even simply commuting to work. It could be that they lose connection during their travel time, or they don't have connection on arrival. It would even be both of those scenarios.
 ---
 class: left, middle, inverse
 
@@ -101,6 +137,9 @@ class: left, middle, inverse
 
 - Travel
 - ISP Maintenance
+
+???
+Perhaps the Internet provider goes down for maintenace, or has grown rapidly and has more traffic than they can handle. Or perhaps it is a hardware issue at an individual or business level.
 ---
 class: left, middle, inverse
 
@@ -109,6 +148,9 @@ class: left, middle, inverse
 - Travel
 - ISP Maintenance
 - Cloud provider outage
+
+???
+On the business side, perhaps the cloud service provider goes down for some routine maintenance. Maybe instead of maintenance _they_ are experiencing more traffic than they can handle.
 ---
 class: left, middle, inverse
 
@@ -118,10 +160,16 @@ class: left, middle, inverse
 - ISP Maintenance
 - Cloud provider outage
 - Economic disparity
+
+???
+I would argue that economic disparity is the hardest issue to combat because it's heavily intertwined with other issues. But, it's important not to forget that someone can lose connection because they are unable to pay their cell phone bill, or they run out of data for the month. Or perhaps they just can't afford internet access at all.
 ---
 class: center, middle, inverse
 
 # Solution: Cache data clientside
+
+???
+One way that developers can help is by caching data on the clientside. Let's look at some ways we've tried to hold on to client data in the past.
 ---
 class: left, middle, inverse
 
@@ -132,6 +180,9 @@ class: left, middle, inverse
 # Cookies
 
 - Easy to add and access
+
+???
+Creating a cookie is pretty simple and accessing existing cookies is very simple as well.
 ---
 class: left, middle, inverse
 
@@ -139,6 +190,9 @@ class: left, middle, inverse
 
 - Easy to add and access
 - Low storage capabilities
+
+???
+However cookies come with drawbacks, and low storage is definitely one of those. Some older browsers limited the amount of cookies that could be stored and generally you can only store about 4mb in a single cookie.
 ---
 class: left, middle, inverse
 
@@ -147,6 +201,9 @@ class: left, middle, inverse
 - Easy to add and access
 - Low storage capabilities
 - Increased overhead on AJAX requests
+
+???
+Additionally cookies are added to AJAX requests, so if you're using cookies heavily to store data clientside, you're adding overhead onto AJAX requests and potentially slowing those down.
 ---
 class: left, middle, inverse
 
@@ -156,101 +213,95 @@ class: left, middle, inverse
 - Low storage capabilities
 - Increased overhead on AJAX requests
 - Non-complex data
+
+???
+Cookies are stored as strings along with other meta-data about the cookies, which means that the developer would have to parse the cookie to get all of the necessary data.
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
 
 - Ease of use
+
+???
+Similar to cookies session, session storage offers ease of use. Easy to add data and easy to access it.
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
 
 - Ease of use
 - Key/value pairs
+
+???
+Additionally you're able to associate your data to a key and in that, offer a description of a particular piece of data.
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
 
 - Ease of use
 - Key/value pairs
 - Low storage capabilities
+
+???
+Unfortunately -- also similarly to cookies -- the storage capabilities of session storage is very low. You're only able to store about 10mb in session storage.
+It's also good to note that session storage space is usually shared with local storage space.
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
 
 - Ease of use
 - Key/value pairs
 - Low storage capabilities
-- No data persistence
+- No data persistence (Session Storage)
+
+???
+Session storage only lasts the duration of the browser session, which means that once you've closed your browser, your data is gone.
 ---
 class: left, middle, inverse
 
-# Session storage
+# Session storage and Local Storage
+
+- Ease of use
+- Key/value pairs
+- Low storage capabilities
+- No data persistence (Session Storage)
+- Short-term data persistence (Local Storage)
+
+???
+Local storage lasts longer than Session Storage, but still isn't exact persisted. If your user clears their cookies, they'll lose local storage. Additionally browsers will clear old local storage data to free up space.
+---
+class: left, middle, inverse
+
+# Session storage and Local Storage
 
 - Ease of use
 - Key/value pairs
 - Low storage capabilities
 - No data persistence
 - Non-complex data
+
+???
+While both of these use key/value pairs, the key/value pairs only store strings, so we still aren't able to store complex objects.
 ---
 class: left, middle, inverse
 
-# Local storage
----
-class: left, middle, inverse
-
-# Local storage
-
-- Ease of use
----
-class: left, middle, inverse
-
-# Local storage
-
-- Ease of use
-- Key/value pairs
----
-class: left, middle, inverse
-
-# Local storage
-
-- Ease of use
-- Key/value pairs
-- Low storage capabilities
----
-class: left, middle, inverse
-
-# Local storage
-
-- Ease of use
-- Key/value pairs
-- Low storage capabilities
-- Short-term data persistence
----
-class: left, middle, inverse
-
-# Local storage
-
-- Ease of use
-- Key/value pairs
-- Low storage capabilities
-- Short-term data persistence
-- Non-complex data
-
+# WebSQL
 ---
 class: left, middle, inverse
 
 # WebSQL
 
 - Built on SQLite
+
+???
+WebSQL was a relational database in the browser complete with tables and columns.
 ---
 class: left, middle, inverse
 
@@ -258,6 +309,9 @@ class: left, middle, inverse
 
 - Built on SQLite
 - Stores complex data
+
+???
+WebSQL was innovative in that it tried to solve the issue developers have with being unable to store complex data.
 ---
 class: left, middle, inverse
 
@@ -266,6 +320,9 @@ class: left, middle, inverse
 - Built on SQLite
 - Stores complex data
 - Requires SQL knowledge
+
+???
+The downside of WebSQL was that many javascript developers -- the very people who needed to be able to store this data -- weren't necessarily familiar with the SQL syntax WebSQL required.
 ---
 class: left, middle, inverse
 
@@ -275,6 +332,9 @@ class: left, middle, inverse
 - Stores complex data
 - Requires SQL knowledge
 - Non-JSON objects
+
+???
+Additionally you weren't going to get JSON objects out of WebSQL, which is what many javascript devs have come to expect and use to populate their web apps with data.
 ---
 class: left, middle, inverse
 
@@ -285,16 +345,22 @@ class: left, middle, inverse
 - Requires SQL knowledge
 - Non-JSON objects
 - Deprecated
+
+???
+Because of those downsides, WebSQL is deprecated. But it paved the way for something else.
 ---
 class: center, middle, inverse
 
-# Enter: [IndexedDB](link)
+# Enter: [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 ---
 class: left, middle, inverse
 
 # IndexedDB
 
 - Wide browser support
+
+???
+IndexedDB offers browser support from IE, Edge, Firefox, Chrome, Safari and even Opera. It also offers wide mobile support as well.
 ---
 class: left, middle, inverse
 
@@ -302,6 +368,9 @@ class: left, middle, inverse
 
 - Wide browser support
 - Can save complex data
+
+???
+Like WebSQL, IndexedDB offers the ability to save complex data, but the data is a more JSON-like format.
 ---
 class: left, middle, inverse
 
@@ -310,6 +379,9 @@ class: left, middle, inverse
 - Wide browser support
 - Can save complex data
 - Data persistence
+
+???
+Unlike cookies and local/session storage, IndexedDB data isn't lost if a user clears their session data/cookies.
 ---
 class: left, middle, inverse
 
@@ -319,17 +391,23 @@ class: left, middle, inverse
 - Can save complex data
 - Data persistence
 - Higher storage capabilities
+
+???
+IndexedDB has higher storage capabilities, with some browsers not imposing limits on IndexedDB.
 ---
 class: left, middle, inverse
 
 # IndexedDB Structure
 
-- Databases
+- Database
 - Object stores
 - Indexes
 - Keypath
 - AutoIncrement
 - Transactions
+
+???
+Let's talk a little bit about the structure of IndexedDB, because the "DB" part is kind of a misnomer. IndexedDB is probably closer to NoSQL than traditional SQL.
 ---
 class: left, middle, inverse
 
@@ -338,6 +416,11 @@ class: left, middle, inverse
 - IndexedDB can hold multiple object stores
 - Groups similar data together
 - Similar to NoSQL
+
+???
+Instead of tables, IndexedDB uses object stores. The object store will mirror what a javascript object would look like. However like a SQL database can hold multiple tables, an IndexedDB database can hold multiple object stores.
+
+Much like a table the idea of an object store is to group similar data together in a logical way. Unlike tables, the grouping of data will likely rely more on how the data is grouped together in the _view_, rather than what makes logical sense for a database. For example, if you had a web app showing information about a user which would could come from multiple SQL tables, in IndexedDB, _all_ of that data might live in one Object Store.
 ---
 class: left, middle, inverse
 
@@ -345,14 +428,21 @@ class: left, middle, inverse
 
 - Defines properties within an object store
 - Properties do not have type requirements
+
+???
+Indexes live in Object Stores, and an object store can have an unlimited amount of indexes. They're similar to table columns, but they do not have a type requirement.
 ---
 class: left, middle, inverse
 
 # Keypath
 
+- An index is designated as the keypath
 - Specifies the unique key for a record
 - Can look up record directly by keypath
 - Property value must be unique
+
+???
+Searching in IndexedDB is pretty different from SQL databases. You don't have a `WHERE` clause you can use. However if you define something as a keypath, you're able to look up a record directly using the property which has a keypath. For example if you had an object store of users, and the usernames were all unique, you could make `username` your keypath and look up the `carmen` user directly to get their information.
 ---
 class: left, middle, inverse
 
@@ -361,28 +451,43 @@ class: left, middle, inverse
 - Similar to autoincrementing primary keys
 - Property will always be a number
 - Value will always be unique
+
+???
+If you autoincrement an index, it's value will always be a number. This is kind of similar to autoIncrementing primary keys in SQL, however without a `WHERE` clause, we aren't able to search directly for an ID that's been autoincremented (unless the ID was specified as a keypath).
 ---
 class: left, middle, inverse
 
 # Transactions
 
 - Similar to SQL Transactions
-- Groups changes together 
+- Groups changes together
 - If one change fails, transaction stops and DB maintains state
 - Can specify array of object stores
+
+???
+Similar to SQL transactions, IndexedDB transactions allow you maintain the state of your database in the event that a change fails. All changes must take place within a transaction. Additionally when you are writing to the database, you must specifiy that within your transaction. We'll see an example of that soon.
 ---
 class: center, middle, inverse
 
 # What data should be stored clientside?
+
+???
+Now that we have an idea of what an indexedDB database looks like, what should we store in it?
 ---
 class: center, middle, inverse
 
 # What data should be stored clientside?
 ## AKA: Let's talk security
+
+???
+First, we'll delve a little bit into the security of clientside storage.
 ---
 class: left, middle, inverse
 
 # Is IndexedDB secure?
+
+???
+You probably shouldn't store sensitive data on the client.
 ---
 class: left, middle, inverse
 
@@ -396,6 +501,9 @@ class: left, middle, inverse
 
 - Data is not encrypted automatically
 - Data can be encrypted before insertion
+
+???
+In order for the data to be encrypted before save, the developer must encrypt it before it is inserted into the database. The dev might want to use the Node Crypto module or something similar.
 ---
 class: left, middle, inverse
 
@@ -404,6 +512,9 @@ class: left, middle, inverse
 - Data is not encrypted automatically
 - Data can be encrypted before insertion
 - Encryption can interfere with searching abilities
+
+???
+if you are reading in the data and planning to do a plain text search, you'll have to unencrypt it somehow before you're able to search and filter the data.
 ---
 class: left, middle, inverse
 
@@ -413,7 +524,12 @@ class: left, middle, inverse
 
 # Is IndexedDB accessible?
 
-- IndexedDB follows the [same-origin policy](link)
+- IndexedDB follows the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
+
+???
+Same-origin policy means that if an indexeddb is created on carmalou.com, facebook.com cannot read in the data from the database.
+
+In fact, I attempted to read in data from another site to see what would happen, and IndexedDB checks to see if the DB exists on the current site/origin, and then if the DB doesn't exist, it creates it on the current origin.
 ---
 class: left, middle, inverse
 
@@ -421,6 +537,9 @@ class: left, middle, inverse
 
 - IndexedDB follows the [same-origin policy](link)
 - IndexedDB cannot be copied across browsers (even on same-origin)
+
+???
+If you had an indexeddb database on carmalou.com in chrome, you wouldn't automatically have it on carmalou.com in firefox, nor would you be able to copy it over.
 ---
 class: left, middle, inverse
 
@@ -429,6 +548,9 @@ class: left, middle, inverse
 - IndexedDB follows the [same-origin policy](link)
 - IndexedDB cannot be copied across browsers (even on same-origin)
 - Users can view (and delete!) their data through dev tools
+
+???
+However the data is accessible by the user through dev tools. So you don't want to store data that you don't want your user seeing.
 ---
 class: left, middle, inverse
 
@@ -480,7 +602,7 @@ db.onungradeneeded = function(event) {
   var tmpDb = event.target.result;
 
   var trooperStore = tmpDb.addObjectStore("stormtroopers", 
-    { keyPath: 'name', autoincrement: true  });
+    { keyPath: 'name' });
 
   var shipStore = tmpDb.addObjectStore("rooms", 
     { autoincrement: true });
@@ -497,7 +619,8 @@ db.onungradeneeded = function(event) {
   // continued func from last slide
 
   trooperStore.addIndex("id", "id", { autoIncrement: true } );
-  trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", { unique: false });
+  trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", 
+  { unique: false });
 
   shipStore.addIndex("room", "room", { unique: true });
 }
@@ -544,8 +667,8 @@ var newTrooper = {
   'armoryAccess': true
 };
 
-var tmpTransaction = db.transaction("stormtroopers").objectStore("stormtroopers");
-tmpTransaction.add({newTrooper});
+var tmpTransaction = db.transaction("stormtroopers", "readwrite").objectStore("stormtroopers");
+tmpTransaction.add(newTrooper);
 ```
 ---
 class: left, middle, inverse
@@ -553,7 +676,7 @@ class: left, middle, inverse
 # Read a record
 
 ```javascript
-db.transaction("stormtroopers")
+db.transaction("stormtroopers", "readonly")
   .objectStore("stormtroopers")
   .get("Sally Stormer")
   .onsuccess = function(event) {
@@ -566,14 +689,16 @@ class: left, middle, inverse
 # Update a record
 
 ```javascript
-var transaction = db.transaction("stormtroopers", "readwrite").objectStore("stormtroopers");
+var transaction = db.transaction("stormtroopers", "readwrite")
+                    .objectStore("stormtroopers");
+
 var trooper = transaction.get("Sally Stormer");
 
 trooper.onsuccess = function(event) {
   // grab the data and update it
   var sally = event.target.result;
   sally.trashCompactorAccess = false;
-  sally.armoryAccess = true;
+  sally.landingStripAccess = true;
 
   var update = transaction.put(sally);
 
@@ -598,6 +723,10 @@ var transaction = db.transaction("stormtroopers", "readwrite")
 
 transaction.onsuccess = function(event) {
   // more dark side stuff
+}
+
+transaction.onerror = function(event) {
+  // uh-oh, looks like Traitor Trooper escaped
 }
 ```
 ---
