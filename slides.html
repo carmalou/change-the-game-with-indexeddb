@@ -352,7 +352,7 @@ class: left, middle, inverse
 
 - Specifies the unique key for a record
 - Can look up record directly by keypath
-- Property must be unique
+- Property value must be unique
 ---
 class: left, middle, inverse
 
@@ -360,27 +360,105 @@ class: left, middle, inverse
 
 - Similar to autoincrementing primary keys
 - Property will always be a number
+- Value will always be unique
 ---
 class: left, middle, inverse
 
 # Transactions
 
 - Similar to SQL Transactions
-- Specify which object store to edit
+- Groups changes together 
+- If one change fails, transaction stops and DB maintains state
 - Can specify array of object stores
-- Specify `readwrite`, `readonly`, or `versionchange`
 ---
 class: center, middle, inverse
 
 # What data should be stored clientside?
+---
+class: center, middle, inverse
 
-// Talk security, etc
+# What data should be stored clientside?
+## AKA: Let's talk security
+---
+class: left, middle, inverse
+
+# Is IndexedDB secure?
+---
+class: left, middle, inverse
+
+# Is IndexedDB secure?
+
+- Data is not encrypted automatically
+---
+class: left, middle, inverse
+
+# Is IndexedDB secure?
+
+- Data is not encrypted automatically
+- Data can be encrypted before insertion
+---
+class: left, middle, inverse
+
+# Is IndexedDB secure?
+
+- Data is not encrypted automatically
+- Data can be encrypted before insertion
+- Encryption can interfere with searching abilities
+---
+class: left, middle, inverse
+
+# Is IndexedDB accessible?
+---
+class: left, middle, inverse
+
+# Is IndexedDB accessible?
+
+- IndexedDB follows the [same-origin policy](link)
+---
+class: left, middle, inverse
+
+# Is IndexedDB accessible?
+
+- IndexedDB follows the [same-origin policy](link)
+- IndexedDB cannot be copied across browsers (even on same-origin)
+---
+class: left, middle, inverse
+
+# Is IndexedDB accessible?
+
+- IndexedDB follows the [same-origin policy](link)
+- IndexedDB cannot be copied across browsers (even on same-origin)
+- Users can view (and delete!) their data through dev tools
 ---
 class: left, middle, inverse
 
 # Use-cases
 
-// Find some case studies, if possible
+- [https://serviceworke.rs/](https://serviceworke.rs/)
+  - Caches Service Worker documentation offline
+---
+class: left, middle, inverse
+
+# Use-cases
+
+- [https://serviceworke.rs/](https://serviceworke.rs/)
+  - Offline Service Worker documentation
+
+- [http://devdocs.io/](http://devdocs.io/)
+  - Caches various tech docs offline
+---
+class: left, middle, inverse
+
+# Use-cases
+
+- [https://serviceworke.rs/](https://serviceworke.rs/)
+  - Offline Service Worker documentation
+
+- [http://devdocs.io/](http://devdocs.io/)
+  - Caches various tech docs offline
+
+- [Google Docs](https://www.google.com/docs/about/)
+  - Caches user input offline for future sync
 ---
 class: left, middle, inverse
 
@@ -420,9 +498,6 @@ db.onungradeneeded = function(event) {
 
   trooperStore.addIndex("id", "id", { autoIncrement: true } );
   trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", { unique: false });
-  trooperStore.addIndex("messHallAccess", "messHallAccess", { unique: false });
-  trooperStore.addIndex("landingStripAccess", "landingStripAccess", { unique: false });
-  trooperStore.addIndex("armoryAccess", "armoryAccess", { unique: false });
 
   shipStore.addIndex("room", "room", { unique: true });
 }
