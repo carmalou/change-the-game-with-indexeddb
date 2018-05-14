@@ -402,7 +402,7 @@ db.onungradeneeded = function(event) {
   var tmpDb = event.target.result;
 
   var trooperStore = tmpDb.addObjectStore("stormtroopers", 
-    { keyPath: 'name', autoincrement: true  });
+    { keyPath: 'name' });
 
   var shipStore = tmpDb.addObjectStore("rooms", 
     { autoincrement: true });
