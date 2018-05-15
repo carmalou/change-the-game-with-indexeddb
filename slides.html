@@ -406,6 +406,7 @@ class: left, middle, inverse
 - Keypath
 - AutoIncrement
 - Transactions
+- Events
 
 ???
 Let's talk a little bit about the structure of IndexedDB, because the "DB" part is kind of a misnomer. IndexedDB is probably closer to NoSQL than traditional SQL.
@@ -467,6 +468,24 @@ class: left, middle, inverse
 
 ???
 Similar to SQL transactions, IndexedDB transactions allow you maintain the state of your database in the event that a change fails. All changes must take place within a transaction. Additionally when you are writing to the database, you must specifiy that within your transaction. We'll see an example of that soon.
+---
+class: left, middle, inverse
+
+# Events
+
+- upgradeneeded
+- complete
+- abort
+- success
+- error
+- blocked
+- versionchange
+- close
+
+???
+Because IndexedDB is asychronous, we need a way to stop and pick up again once a certain task is complete. Events allow us to do just that.
+
+Talk about the most common events (onsuccess, onerror, complete) and mention `onupgradeneeded`
 ---
 class: center, middle, inverse
 
@@ -781,9 +800,120 @@ class: left, middle, inverse
 ---
 class: left, middle, inverse
 
+# Searching within IndexedDB
+---
+class: left, middle, inverse
+
+# Searching within IndexedDB
+
+- `.openCursor()` searches through each record
+---
+class: left, middle, inverse
+
+# Searching within IndexedDB
+
+- `.openCursor()` searches through each record
+- `.bound()` allows a more narrow search
+---
+class: left, middle, inverse
+
+# Searching within IndexedDB
+
+- `.openCursor()` searches through each record
+- `.bound()` allows a more narrow search
+- Only a single record in memory at a time
+---
+class: left, middle, inverse
+
+# Search for `trashCompactor` troopers
+
+```javascript
+var arr = [];
+var transaction = db.transaction("stormtroopers", "readonly");
+var objectStore = transaction.objectStore("stormtroopers");
+var request = objectStore.openCursor();
+request.onsuccess = function(event) {
+    var cursor = event.target.result;
+    if(cursor) {
+      if(cursor.value.trashCompactorAccess == true) {
+				arr.push(cursor.value);
+      }
+        cursor.continue();
+    } else {
+        // no more results
+    }
+};
+```
+---
+class: left, middle, inverse
+
+# Search for a unique trooper
+
+```javascript
+var uniqueTrooper;
+var transaction = db.transaction("stormtroopers", "readonly");
+var objectStore = transaction.objectStore("stormtroopers");
+var request = objectStore.openCursor();
+request.onsuccess = function(event) {
+    var cursor = event.target.result;
+    if(cursor) {
+      if(cursor.value.landingStripAccess == true) {
+        uniqueTrooper = cursor.value;
+        return;
+      }
+        cursor.continue();
+    } else {
+        // no more results
+    }
+};
+```
+---
+class: left, middle, inverse
+
+# Search with bounds
+
+```javascript
+var keyRangeValue = IDBKeyRange.bound("A", "F");
+var transaction = db.transaction('stormtroopers', 'readonly');
+var objectStore = transaction.objectStore('stormtroopers');
+
+objectStore.openCursor(keyRangeValue).onsuccess = function(event) {
+  var cursor = event.target.result;
+  if(cursor) {
+    // do some checks here
+    cursor.continue();
+  } else {
+    // no more results
+  }
+};
+```
+---
+class: left, middle, inverse
+
+# Search for non-keyPath index
+
+```javascript
+var keyRangeValue = IDBKeyRange.only('blue');
+var index = db.transaction('emailObjStore').objectStore('emailObjStore').index('favoriteColor');
+var req = index.openCursor(keyRangeValue);
+
+req.onsuccess = function(event) {
+  var cursor = event.target.result;
+  if(cursor) {
+    console.log(cursor);
+    cursor.continue();
+  } else {
+    // no more results
+  }
+}
+```
+---
+class: left, middle, inverse
+
 # Demos!
 
-### [Demo link here](link)
+### [Simple form](http://carmalou.com/indexeddb/prototype.html)
+### [Stormtrooper Access System](link)
 ---
 layout: false
 class: center, middle, inverse
