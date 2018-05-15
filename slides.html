@@ -284,7 +284,8 @@ class: left, middle, inverse
 - Ease of use
 - Key/value pairs
 - Low storage capabilities
-- No data persistence
+- No data persistence (Session Storage)
+- Short-term data persistence (Local Storage)
 - Non-complex data
 
 ???
@@ -587,7 +588,7 @@ class: left, middle, inverse
 # Initialize a database
 
 ```javascript
-var db = window.indexeddb.open('deathstar2', 1);
+var db = window.indexedDB.open('deathstar2', 1);
 ```
 
 ### But there's a little more to it than that.
@@ -598,14 +599,15 @@ class: left, middle, inverse
 ### Object Stores
 
 ```javascript
-db.onungradeneeded = function(event) {
+db.onupgradeneeded = function(event) {
   var tmpDb = event.target.result;
+  var trooperStore = tmpDb.createObjectStore("stormtroopers",
+                    { keyPath: 'name' });
+  var shipStore = tmpDb.createObjectStore("rooms", 
+                  { keyPath: "keyName" });
 
-  var trooperStore = tmpDb.addObjectStore("stormtroopers", 
-    { keyPath: 'name' });
+  // next we'll define the indexes
 
-  var shipStore = tmpDb.addObjectStore("rooms", 
-    { autoincrement: true });
 }
 ```
 ---
@@ -618,11 +620,17 @@ class: left, middle, inverse
 db.onungradeneeded = function(event) {
   // continued func from last slide
 
-  trooperStore.addIndex("id", "id", { autoIncrement: true } );
-  trooperStore.addIndex("trashCompactorAccess", "trashCompactorAccess", 
-  { unique: false });
+  trooperStore.createIndex('name', 'name', 
+                      { unique: true });
+                      
+  trooperStore.createIndex("trashCompactorAccess", "trashCompactorAccess", 
+                      { unique: false });
 
-  shipStore.addIndex("room", "room", { unique: true });
+  shipStore.createIndex("keyName", "keyName", 
+                      { unique: true });
+
+  shipStore.createIndex("displayName", "displayName", 
+                      { unique: true });
 }
 ```
 ---
@@ -631,7 +639,7 @@ class: left, middle, inverse
 # Open an IndexedDB database
 
 ```javascript
-var db = window.indexeddb.open('deathstar2', 1);
+var db = window.indexedDB.open('deathstar2');
 
 db.onsuccess = function(event) {
     // do some (probably dark side) stuff
@@ -667,7 +675,9 @@ var newTrooper = {
   'armoryAccess': true
 };
 
-var tmpTransaction = db.transaction("stormtroopers", "readwrite").objectStore("stormtroopers");
+var tmpTransaction = db.transaction("stormtroopers", "readwrite")
+                       .objectStore("stormtroopers");
+
 tmpTransaction.add(newTrooper);
 ```
 ---
@@ -772,6 +782,8 @@ class: left, middle, inverse
 class: left, middle, inverse
 
 # Demos!
+
+### [Demo link here](link)
 ---
 layout: false
 class: center, middle, inverse
