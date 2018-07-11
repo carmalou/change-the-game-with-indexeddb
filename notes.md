@@ -7,6 +7,8 @@
     - HOWEVER when you try to do a `get()` by keyPath, you must include an array of keyPaths _in the same order_.
     - If you only search by one keyPath when you've specified an array of strings, you'll get undefined _even if_ that keyPath exists
 
+- IndexedDB data is lost when a user clears their cache HOWEVER the schema is not deleted.
+
 # Cursor:
 
 ```

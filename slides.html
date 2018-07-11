@@ -47,6 +47,10 @@
       .carmalou {
           color: #CCBADC;
       }
+
+      code {
+        line-height: 1.3;
+      }
     </style>
   </head>
   <body>
@@ -275,7 +279,7 @@ class: left, middle, inverse
 - Short-term data persistence (Local Storage)
 
 ???
-Local storage lasts longer than Session Storage, but still isn't exact persisted. If your user clears their cookies, they'll lose local storage. Additionally browsers will clear old local storage data to free up space.
+Local storage lasts longer than Session Storage, but still isn't exact persisted. Browsers will clear old local storage data to free up space.
 ---
 class: left, middle, inverse
 
@@ -366,18 +370,6 @@ class: left, middle, inverse
 
 - Wide browser support
 - Can save complex data
-- Data persistence
-
-???
-Unlike cookies and local/session storage, IndexedDB data isn't lost if a user clears their session data/cookies.
----
-class: left, middle, inverse
-
-# IndexedDB
-
-- Wide browser support
-- Can save complex data
-- Data persistence
 - Higher storage capabilities
 
 ???
@@ -568,15 +560,15 @@ class: left, middle, inverse
 
 # Use-cases
 
-- [https://serviceworke.rs/](https://serviceworke.rs/)
-  - Caches Service Worker documentation offline
+- [Tinder](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0)
+  - Replaced LocalForage with IndexedDB
 ---
 class: left, middle, inverse
 
 # Use-cases
 
-- [https://serviceworke.rs/](https://serviceworke.rs/)
-  - Offline Service Worker documentation
+- [Tinder](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0)
+  - Replaced LocalForage with IndexedDB
 
 - [http://devdocs.io/](http://devdocs.io/)
   - Caches various tech docs offline
@@ -585,8 +577,8 @@ class: left, middle, inverse
 
 # Use-cases
 
-- [https://serviceworke.rs/](https://serviceworke.rs/)
-  - Offline Service Worker documentation
+- [Tinder](https://medium.com/@addyosmani/a-tinder-progressive-web-app-performance-case-study-78919d98ece0)
+  - Replaced LocalForage with IndexedDB
 
 - [http://devdocs.io/](http://devdocs.io/)
   - Caches various tech docs offline
@@ -615,7 +607,7 @@ db.onupgradeneeded = function(event) {
   var trooperStore = tmpDb.createObjectStore("stormtroopers",
                     { keyPath: 'name' });
   var shipStore = tmpDb.createObjectStore("rooms", 
-                  { keyPath: "keyName" });
+                  { keyPath: "roomName" });
 
   // next we'll define the indexes
 
@@ -637,7 +629,7 @@ db.onungradeneeded = function(event) {
   trooperStore.createIndex("trashCompactorAccess", "trashCompactorAccess", 
                       { unique: false });
 
-  shipStore.createIndex("keyName", "keyName", 
+  shipStore.createIndex("roomName", "roomName", 
                       { unique: true });
 
   shipStore.createIndex("displayName", "displayName", 
@@ -849,7 +841,7 @@ var request = objectStore.openCursor();
 request.onsuccess = function(event) {
     var cursor = event.target.result;
     if(cursor) {
-      if(cursor.value.landingStripAccess == true) {
+      if(cursor.value.vaderBodyGuard == true) {
         uniqueTrooper = cursor.value;
         return;
       }
@@ -886,7 +878,9 @@ class: left, middle, inverse
 
 ```javascript
 var keyRangeValue = IDBKeyRange.only('blue');
-var index = db.transaction('emailObjStore').objectStore('emailObjStore').index('favoriteColor');
+var index = db.transaction('emailObjStore')
+              .objectStore('emailObjStore')
+              .index('favoriteColor');
 var req = index.openCursor(keyRangeValue);
 
 req.onsuccess = function(event) {
