@@ -192,7 +192,7 @@ class: left, middle, inverse
 - Low storage capabilities
 
 ???
-However cookies come with drawbacks, and low storage is definitely one of those. Some older browsers limited the amount of cookies that could be stored and generally you can only store about 4mb in a single cookie.
+However cookies come with drawbacks, and low storage is definitely one of those. Some older browsers limited the amount of cookies that could be stored and generally you can only store about 4kb in a single cookie.
 ---
 class: left, middle, inverse
 
@@ -332,19 +332,6 @@ class: left, middle, inverse
 - Built on SQLite
 - Stores complex data
 - Requires SQL knowledge
-- Non-JSON objects
-
-???
-Additionally you weren't going to get JSON objects out of WebSQL, which is what many javascript devs have come to expect and use to populate their web apps with data.
----
-class: left, middle, inverse
-
-# WebSQL
-
-- Built on SQLite
-- Stores complex data
-- Requires SQL knowledge
-- Non-JSON objects
 - Deprecated
 
 ???
@@ -538,12 +525,11 @@ if you are reading in the data and planning to do a plain text search, you'll ha
 ---
 class: left, middle, inverse
 
-# Is IndexedDB accessible?
----
-class: left, middle, inverse
+# Is IndexedDB secure?
 
-# Is IndexedDB accessible?
-
+- Data is not encrypted automatically
+- Data can be encrypted before insertion
+- Encryption can interfere with searching abilities
 - IndexedDB follows the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 
 ???
@@ -553,9 +539,12 @@ In fact, I attempted to read in data from another site to see what would happen,
 ---
 class: left, middle, inverse
 
-# Is IndexedDB accessible?
+# Is IndexedDB secure?
 
-- IndexedDB follows the [same-origin policy](link)
+- Data is not encrypted automatically
+- Data can be encrypted before insertion
+- Encryption can interfere with searching abilities
+- IndexedDB follows the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 - IndexedDB cannot be copied across browsers (even on same-origin)
 
 ???
@@ -563,9 +552,12 @@ If you had an indexeddb database on carmalou.com in chrome, you wouldn't automat
 ---
 class: left, middle, inverse
 
-# Is IndexedDB accessible?
+# Is IndexedDB secure?
 
-- IndexedDB follows the [same-origin policy](link)
+- Data is not encrypted automatically
+- Data can be encrypted before insertion
+- Encryption can interfere with searching abilities
+- IndexedDB follows the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 - IndexedDB cannot be copied across browsers (even on same-origin)
 - Users can view (and delete!) their data through dev tools
 
